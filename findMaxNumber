@@ -1,0 +1,39 @@
+const findMaxNum = (number) => {
+	
+  const numberString = String(number)
+  
+  let numbers = [];
+  let counter = 0;
+  let isCounterSet = false;
+  let currentIndex = 0;
+   do {
+   console.log("its running")
+        let formedNumber = ""
+        let isFive = false;
+        for(let i =0; i< numberString.length; i++ ) {
+          let num = numberString[i];
+
+    		if(!isCounterSet && num == 5) {
+    		    counter++;
+    		}
+
+          if(num == "5" && currentIndex !== i && !isFive) {
+            formedNumber += num;
+            isFive = true;
+            currentIndex = i;
+          }
+          else if(num != "5") {
+            formedNumber += num;
+          } 
+
+      }
+      isCounterSet = true;
+      numbers.push(parseInt(formedNumber))
+   } while (--counter > 0);
+  
+  console.log(numbers, "sdsdfsdfs")
+  return Math.max(...numbers);
+}
+
+
+console.log(findMaxNum(915765))
